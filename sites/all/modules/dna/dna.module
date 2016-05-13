@@ -20,7 +20,7 @@ function dna_menu() {
 
 function dna_form() {
     $form['input'] = array(
-        '#title' => 'Enter in dna to convert',
+        '#title' => 'Enter a helix to convert (only letters A, T, C, or G).',
         '#type' => 'textfield',
         '#description' => t('Please enter your DNA'),
         '#element_validate' => array('element_validate_input'),

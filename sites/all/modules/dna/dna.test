@@ -57,12 +57,11 @@ class DNATestCase extends DrupalUnitTestCase
 
     }
 
-
 }
 
 
- class DNATests extends DrupalWebTestCase
- {
+class DNATests extends DrupalWebTestCase
+{
     public static function getInfo()
     {
      return array(
@@ -70,7 +69,7 @@ class DNATestCase extends DrupalUnitTestCase
          'description' => 'Test the DNA converter.',
          'group' => 'Epicodus Code Review Tests',
      );
-    }
+}
 
     public function setUp()
     {
