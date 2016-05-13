@@ -85,7 +85,7 @@ class DNATestCase extends DrupalUnitTestCase
 
     $this->drupalPost('/dna', $edit, t('Submit'));
 
-    $this->assertText(t('t a g c'), t('ya got it right.'));
+    $this->assertText(t('T A G C'), t('ya got it right.'));
 
     }
 
@@ -97,7 +97,7 @@ class DNATestCase extends DrupalUnitTestCase
 
      $this->drupalPost('/dna', $edit, t('Submit'));
 
-     $this->assertText(t('t a t t c g'), t('ya got it right.'));
+     $this->assertText(t('T A T T C G'), t('ya got it right.'));
 
     }
 
