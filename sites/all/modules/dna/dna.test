@@ -5,9 +5,9 @@ class DNATestCase extends DrupalUnitTestCase
     public static function getInfo()
     {
         return array(
-        'name' => 'DNA Tests',
-        'description' => 'Test the DNA converter.',
-        'group' => 'Epicodus Code Review Tests',
+            'name' => 'DNA Tests',
+            'description' => 'Test the DNA converter.',
+            'group' => 'Epicodus Code Review Tests',
         );
     }
     function testDNA()
@@ -57,5 +57,48 @@ class DNATestCase extends DrupalUnitTestCase
 
     }
 
+
+}
+
+
+ class DNATests extends DrupalWebTestCase
+ {
+    public static function getInfo()
+    {
+     return array(
+         'name' => 'DNA Tests',
+         'description' => 'Test the DNA converter.',
+         'group' => 'Epicodus Code Review Tests',
+     );
+    }
+
+    public function setUp()
+    {
+        parent::setUp(array('dna'));
+
+    }
+    public function testDNACreateOne()
+    {
+     $edit = array();
+     $edit['input'] = 'a t c g';
+
+
+    $this->drupalPost('/dna', $edit, t('Submit'));
+
+    $this->assertText(t('t a g c'), t('ya got it right.'));
+
+    }
+
+    public function testDNACreateTwo()
+    {
+      $edit = array();
+      $edit['input'] = 'a t a a g c';
+
+
+     $this->drupalPost('/dna', $edit, t('Submit'));
+
+     $this->assertText(t('t a t t c g'), t('ya got it right.'));
+
+    }
 
 }
