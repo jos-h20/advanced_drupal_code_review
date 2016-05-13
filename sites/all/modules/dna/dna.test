@@ -1,0 +1,61 @@
+
+<?php
+class DNATestCase extends DrupalUnitTestCase
+{
+    public static function getInfo()
+    {
+        return array(
+        'name' => 'DNA Tests',
+        'description' => 'Test the DNA converter.',
+        'group' => 'Epicodus Code Review Tests',
+        );
+    }
+    function testDNA()
+    {
+
+        $description = 'A is changed to T.';
+
+        //Arrange
+        $input = 'a';
+
+        //Act
+        $result = make_second_helix($input);
+
+        //Assert
+        $expected_output = 't';
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'T is changed to A';
+        $input = 't';
+        $result = make_second_helix($input);
+        $expected_output = 'a';
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'C is changed to G';
+        $input = 'c';
+        $result = make_second_helix($input);
+        $expected_output = 'g';
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'G is changed to C';
+        $input = 'g';
+        $result = make_second_helix($input);
+        $expected_output = 'c';
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'A T A A G C  is changed to T A T T C G';
+        $input = 'a t a a g c';
+        $result = make_second_helix($input);
+        $expected_output = 't a t t c g';
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'T A T T C G is changed to A T A A G C';
+        $input = 't a t t c g';
+        $result = make_second_helix($input);
+        $expected_output = 'a t a a g c';
+        $this->assertEqual($result, $expected_output, $description);
+
+    }
+
+
+}

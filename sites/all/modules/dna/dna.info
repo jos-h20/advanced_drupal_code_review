@@ -1,0 +1,8 @@
+
+name = DNA
+description = Shows the opposite side of the DNA helix.
+package = Epicodus Examples
+core = 7.x
+files[] = dna.module
+files[] = dna.test
+dependencies[] = simpletest

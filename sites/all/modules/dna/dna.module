@@ -1,0 +1,56 @@
+
+<?php
+function dna_menu() {
+    $items = array();
+    $items['dna'] = array(
+        'title' => 'DNA Helix Converter',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('dna_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['dna_success'] = array(
+        'title' => 'Success',
+        'page callback' => 'dna_success',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function dna_form() {
+    $form['input'] = array(
+        '#title' => 'Enter in dna to convert',
+        '#type' => 'textfield',
+        '#description' => t('Please enter your DNA'),
+        '#required' => TRUE,
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Submit',
+    );
+    return $form;
+}
+
+function make_second_helix($input) {
+    $input = strtolower($input);
+    $trans = array('a' => 't', 't' => 'a', 'c' => 'g', 'g' => 'c');
+
+
+    $second_helix = strtr($input, $trans);
+
+    return $second_helix;
+}
+
+function dna_form_submit($form, &$form_state) {
+    $input = $form_state['values']['input'];
+    $result = make_second_helix($input);
+    $_SESSION['dna'] = $result;
+
+    $form_state['redirect'] = 'dna_success';
+}
+
+function dna_success() {
+    $dna = $_SESSION['dna'];
+    return '<p>Your other dna string is: ' . $dna . '</p>';
+}
